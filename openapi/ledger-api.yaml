@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Ledger API
+  version: 1.0.0
+  description: Ledger entry recording service for the transfer graph demo.
+servers:
+  - url: https://stage-api.example.com/ledger
+    description: Stage
+  - url: https://api.example.com/ledger
+    description: Production
+paths:
+  /entries:
+    get:
+      operationId: listEntries
+      summary: List ledger entries
+      parameters:
+        - name: transferId
+          in: query
+          schema:
+            type: string
+        - name: accountId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/LedgerEntry"
+    post:
+      operationId: createEntry
+      summary: Create a ledger entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LedgerEntryRequest"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LedgerEntry"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /entries/{entryId}:
+    get:
+      operationId: getEntry
+      summary: Get a ledger entry by ID
+      parameters:
+        - $ref: "#/components/parameters/EntryId"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LedgerEntry"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  parameters:
+    EntryId:
+      name: entryId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    LedgerEntryRequest:
+      type: object
+      required:
+        - accountId
+        - amount
+        - currency
+        - direction
+        - type
+      properties:
+        accountId:
+          type: string
+        transferId:
+          type: string
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        direction:
+          type: string
+          enum: [debit, credit]
+        type:
+          type: string
+          enum: [authorization_hold, hold_release, settlement]
+        reference:
+          type: string
+    LedgerEntry:
+      allOf:
+        - $ref: "#/components/schemas/LedgerEntryRequest"
+        - type: object
+          properties:
+            id:
+              type: string
+            status:
+              type: string
+              enum: [posted]
+            createdAt:
+              type: string
+              format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        statusCode:
+          type: integer
+

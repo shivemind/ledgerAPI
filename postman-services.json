@@ -1,0 +1,41 @@
+{
+  "services": [
+    {
+      "service_key": "ledger-api",
+      "service_name": "Ledger API",
+      "domain": "core-banking",
+      "domain_code": "AF",
+      "requester_email": "owner@example.com",
+      "version": "1.0.0",
+      "spec_path": "openapi/ledger-api.yaml",
+      "spec_url": "https://raw.githubusercontent.com/shivemind/ledgerAPI/main/openapi/ledger-api.yaml",
+      "workspace_id": "",
+      "spec_id": "",
+      "baseline_collection_id": "",
+      "smoke_collection_id": "",
+      "contract_collection_id": "",
+      "environments": [
+        "prod",
+        "stage"
+      ],
+      "environment_uids": {},
+      "runtime_urls": {
+        "prod": "https://api.example.com/ledger",
+        "stage": "https://stage-api.example.com/ledger"
+      },
+      "smoke_base_url": "https://stage-api.example.com/ledger",
+      "enable_insights": false,
+      "cluster_name": "postman-api-graph-k3d",
+      "system_env_map": {
+        "prod": "936898ce-cf73-4feb-827e-8a0e9d5e695e"
+      },
+      "graph": {
+        "namespace": "postman-api-graph",
+        "port": 8082,
+        "image": "ledger-api:dev",
+        "insights_agent_owner": false
+      }
+    }
+  ]
+}
+
