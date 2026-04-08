@@ -28,6 +28,8 @@
       },
       "smoke_base_url": "https://stage-api.example.com/ledger",
       "enable_insights": true,
+      "insights_project_id": "svc_6iICKfarkuQyIwR2tMaSl7",
+      "insights_application_id": "590cceeb-ae60-42d7-b748-fc2e13bb90b2",
       "cluster_name": "postman-api-graph-k3d",
       "system_env_map": {
         "prod": "936898ce-cf73-4feb-827e-8a0e9d5e695e"
