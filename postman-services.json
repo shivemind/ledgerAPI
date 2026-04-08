@@ -9,22 +9,25 @@
       "version": "1.0.0",
       "spec_path": "openapi/ledger-api.yaml",
       "spec_url": "https://raw.githubusercontent.com/shivemind/ledgerAPI/main/openapi/ledger-api.yaml",
-      "workspace_id": "",
-      "spec_id": "",
-      "baseline_collection_id": "",
-      "smoke_collection_id": "",
-      "contract_collection_id": "",
+      "workspace_id": "82c1fa44-95cb-49ef-8092-c2563f634a33",
+      "spec_id": "209a51f6-c123-44dd-ad81-3a5a9ea3a44a",
+      "baseline_collection_id": "52400725-1e484259-8358-4a83-8b22-18935fc94c56",
+      "smoke_collection_id": "52400725-a85767f2-fe20-4103-b252-48c485471f52",
+      "contract_collection_id": "52400725-e3244853-39a5-4bb5-92f8-601f4e6b9d2a",
       "environments": [
         "prod",
         "stage"
       ],
-      "environment_uids": {},
+      "environment_uids": {
+        "prod": "52400725-87830cee-1fa3-4f13-bbba-ed47351d87a9",
+        "stage": "52400725-f70787b7-5e69-4590-b07b-11ce7f47827b"
+      },
       "runtime_urls": {
         "prod": "https://api.example.com/ledger",
         "stage": "https://stage-api.example.com/ledger"
       },
       "smoke_base_url": "https://stage-api.example.com/ledger",
-      "enable_insights": false,
+      "enable_insights": true,
       "cluster_name": "postman-api-graph-k3d",
       "system_env_map": {
         "prod": "936898ce-cf73-4feb-827e-8a0e9d5e695e"
@@ -38,4 +41,3 @@
     }
   ]
 }
-
