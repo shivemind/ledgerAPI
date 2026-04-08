@@ -1,0 +1,8 @@
+workflows:
+  syncSpecToCollection:
+    - spec: ../openapi/ledger-api.yaml
+      collection: ../postman/collections/[Baseline] ledger-api
+    - spec: ../openapi/ledger-api.yaml
+      collection: ../postman/collections/[Smoke] ledger-api
+    - spec: ../openapi/ledger-api.yaml
+      collection: ../postman/collections/[Contract] ledger-api

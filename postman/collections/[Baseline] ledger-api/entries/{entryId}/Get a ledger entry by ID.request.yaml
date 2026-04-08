@@ -1,0 +1,48 @@
+type: http
+name: Get a ledger entry by ID
+url: '{{baseUrl}}/entries/:entryId'
+method: GET
+headers:
+  - key: Accept
+    value: application/json
+pathVariables:
+  - key: entryId
+    value: string
+examples:
+  - response:
+      statusCode: 200
+      statusText: OK
+      body:
+        type: json
+        content: |-
+          {
+            "accountId": "string",
+            "amount": 9759.126090738613,
+            "currency": "string",
+            "direction": "credit",
+            "type": "authorization_hold",
+            "transferId": "string",
+            "reference": "string",
+            "id": "string",
+            "status": "posted",
+            "createdAt": "2013-02-08T14:32:14.685Z"
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: OK
+  - response:
+      statusCode: 404
+      statusText: Not Found
+      body:
+        type: json
+        content: |-
+          {
+            "error": "string",
+            "message": "string",
+            "statusCode": 6739
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: Not found

@@ -1,0 +1,69 @@
+type: http
+name: List ledger entries
+url: '{{baseUrl}}/entries?transferId=string&accountId=string'
+method: GET
+headers:
+  - key: Accept
+    value: application/json
+queryParams:
+  - key: transferId
+    value: string
+  - key: accountId
+    value: string
+scripts:
+  - type: afterResponse
+    code:
+      - // [Smoke] Auto-generated test assertions
+      - pm.test('Status code is successful (2xx)', function () {
+      - '    pm.response.to.be.success;'
+      - '});'
+      - pm.test('Response time is acceptable', function () {
+      - '    var threshold = parseInt(pm.environment.get(''RESPONSE_TIME_THRESHOLD'') || ''2000'', 10);'
+      - '    pm.expect(pm.response.responseTime).to.be.below(threshold);'
+      - '});'
+      - pm.test('Response body is not empty', function () {
+      - '    if (pm.response.code !== 204) {'
+      - '        var body = pm.response.text();'
+      - '        pm.expect(body.length).to.be.above(0);'
+      - '    }'
+      - '});'
+    language: text/javascript
+examples:
+  - response:
+      statusCode: 200
+      statusText: OK
+      body:
+        type: json
+        content: |-
+          {
+            "data": [
+              {
+                "accountId": "string",
+                "amount": 4968.469026657607,
+                "currency": "string",
+                "direction": "credit",
+                "type": "settlement",
+                "transferId": "string",
+                "reference": "string",
+                "id": "string",
+                "status": "posted",
+                "createdAt": "1954-06-20T20:09:52.646Z"
+              },
+              {
+                "accountId": "string",
+                "amount": 9270.393008574227,
+                "currency": "string",
+                "direction": "debit",
+                "type": "authorization_hold",
+                "transferId": "string",
+                "reference": "string",
+                "id": "string",
+                "status": "posted",
+                "createdAt": "2005-05-21T05:34:59.177Z"
+              }
+            ]
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: OK

@@ -1,0 +1,77 @@
+type: http
+name: Create a ledger entry
+url: '{{baseUrl}}/entries'
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Accept
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountId": "string",
+      "amount": 6735.074648939741,
+      "currency": "string",
+      "direction": "debit",
+      "type": "authorization_hold",
+      "transferId": "string",
+      "reference": "string"
+    }
+scripts:
+  - type: afterResponse
+    code:
+      - // [Smoke] Auto-generated test assertions
+      - pm.test('Status code is successful (2xx)', function () {
+      - '    pm.response.to.be.success;'
+      - '});'
+      - pm.test('Response time is acceptable', function () {
+      - '    var threshold = parseInt(pm.environment.get(''RESPONSE_TIME_THRESHOLD'') || ''2000'', 10);'
+      - '    pm.expect(pm.response.responseTime).to.be.below(threshold);'
+      - '});'
+      - pm.test('Response body is not empty', function () {
+      - '    if (pm.response.code !== 204) {'
+      - '        var body = pm.response.text();'
+      - '        pm.expect(body.length).to.be.above(0);'
+      - '    }'
+      - '});'
+    language: text/javascript
+examples:
+  - response:
+      statusCode: 201
+      statusText: Created
+      body:
+        type: json
+        content: |-
+          {
+            "accountId": "string",
+            "amount": 2392.631486821599,
+            "currency": "string",
+            "direction": "debit",
+            "type": "settlement",
+            "transferId": "string",
+            "reference": "string",
+            "id": "string",
+            "status": "posted",
+            "createdAt": "2019-12-12T05:32:31.040Z"
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: Created
+  - response:
+      statusCode: 400
+      statusText: Bad Request
+      body:
+        type: json
+        content: |-
+          {
+            "error": "string",
+            "message": "string",
+            "statusCode": 6392
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: Validation error

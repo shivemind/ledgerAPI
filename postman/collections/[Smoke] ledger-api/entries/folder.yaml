@@ -1,0 +1,6 @@
+type: folder
+name: entries
+items:
+  - ref: ./{entryId}/folder.yaml
+  - ref: ./List ledger entries.request.yaml
+  - ref: ./Create a ledger entry.request.yaml

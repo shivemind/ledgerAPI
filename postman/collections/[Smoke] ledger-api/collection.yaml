@@ -1,0 +1,11 @@
+$schema: https://schema.postman.com/json/draft-2020-12/collection/v3.0.0/
+type: collection
+name: '[Smoke] ledger-api'
+description: Ledger entry recording service for the transfer graph demo.
+id: a85767f2-fe20-4103-b252-48c485471f52
+variables:
+  - key: baseUrl
+    value: https://stage-api.example.com/ledger
+items:
+  - ref: ./entries/folder.yaml
+  - ref: ./00 - Resolve Secrets.request.yaml

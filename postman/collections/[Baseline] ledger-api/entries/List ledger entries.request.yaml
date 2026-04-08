@@ -1,0 +1,51 @@
+type: http
+name: List ledger entries
+url: '{{baseUrl}}/entries?transferId=string&accountId=string'
+method: GET
+headers:
+  - key: Accept
+    value: application/json
+queryParams:
+  - key: transferId
+    value: string
+  - key: accountId
+    value: string
+examples:
+  - response:
+      statusCode: 200
+      statusText: OK
+      body:
+        type: json
+        content: |-
+          {
+            "data": [
+              {
+                "accountId": "string",
+                "amount": 1713.1478605180694,
+                "currency": "string",
+                "direction": "credit",
+                "type": "hold_release",
+                "transferId": "string",
+                "reference": "string",
+                "id": "string",
+                "status": "posted",
+                "createdAt": "2000-03-15T06:35:56.833Z"
+              },
+              {
+                "accountId": "string",
+                "amount": 3020.870106542541,
+                "currency": "string",
+                "direction": "credit",
+                "type": "hold_release",
+                "transferId": "string",
+                "reference": "string",
+                "id": "string",
+                "status": "posted",
+                "createdAt": "1971-01-22T23:29:49.078Z"
+              }
+            ]
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: OK

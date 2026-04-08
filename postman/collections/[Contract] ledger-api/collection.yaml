@@ -1,0 +1,11 @@
+$schema: https://schema.postman.com/json/draft-2020-12/collection/v3.0.0/
+type: collection
+name: '[Contract] ledger-api'
+description: Ledger entry recording service for the transfer graph demo.
+id: e3244853-39a5-4bb5-92f8-601f4e6b9d2a
+variables:
+  - key: baseUrl
+    value: https://stage-api.example.com/ledger
+items:
+  - ref: ./entries/folder.yaml
+  - ref: ./00 - Resolve Secrets.request.yaml

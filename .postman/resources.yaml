@@ -1,0 +1,20 @@
+workspace:
+  id: 82c1fa44-95cb-49ef-8092-c2563f634a33
+localResources:
+  collections:
+    - ../postman/collections/[Baseline] ledger-api
+    - ../postman/collections/[Smoke] ledger-api
+    - ../postman/collections/[Contract] ledger-api
+  environments:
+    - ../postman/environments/prod.postman_environment.json
+    - ../postman/environments/stage.postman_environment.json
+  specs:
+    - ../openapi/ledger-api.yaml
+cloudResources:
+  collections:
+    ../postman/collections/[Baseline] ledger-api: 52400725-1e484259-8358-4a83-8b22-18935fc94c56
+    ../postman/collections/[Smoke] ledger-api: 52400725-a85767f2-fe20-4103-b252-48c485471f52
+    ../postman/collections/[Contract] ledger-api: 52400725-e3244853-39a5-4bb5-92f8-601f4e6b9d2a
+  environments:
+    ../postman/environments/prod.postman_environment.json: 52400725-87830cee-1fa3-4f13-bbba-ed47351d87a9
+    ../postman/environments/stage.postman_environment.json: 52400725-f70787b7-5e69-4590-b07b-11ce7f47827b

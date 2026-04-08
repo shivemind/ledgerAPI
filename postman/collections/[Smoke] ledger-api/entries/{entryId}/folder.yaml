@@ -1,0 +1,4 @@
+type: folder
+name: '{entryId}'
+items:
+  - ref: ./Get a ledger entry by ID.request.yaml

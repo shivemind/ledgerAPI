@@ -1,0 +1,59 @@
+type: http
+name: Create a ledger entry
+url: '{{baseUrl}}/entries'
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Accept
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountId": "string",
+      "amount": 5162.633126006766,
+      "currency": "string",
+      "direction": "credit",
+      "type": "settlement",
+      "transferId": "string",
+      "reference": "string"
+    }
+examples:
+  - response:
+      statusCode: 201
+      statusText: Created
+      body:
+        type: json
+        content: |-
+          {
+            "accountId": "string",
+            "amount": 9759.126090738613,
+            "currency": "string",
+            "direction": "credit",
+            "type": "authorization_hold",
+            "transferId": "string",
+            "reference": "string",
+            "id": "string",
+            "status": "posted",
+            "createdAt": "2013-02-08T14:32:14.685Z"
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: Created
+  - response:
+      statusCode: 400
+      statusText: Bad Request
+      body:
+        type: json
+        content: |-
+          {
+            "error": "string",
+            "message": "string",
+            "statusCode": 6739
+          }
+      headers:
+        - key: Content-Type
+          value: application/json
+    name: Validation error
